@@ -1,0 +1,51 @@
+networks:
+    application:
+        name: application
+        driver: bridge
+services:
+    pedidos-farmacia:
+        container_name: pedidos-farmacia
+        build:
+            context: .
+            dockerfile: ./docker/Dockerfile
+            args:
+                PHP_VERSION: 8.4.3-fpm-bullseye
+            target: app
+        volumes:
+            - './:/var/www/app'
+        ports:
+          - "80:80"
+          - "5173:5173"
+
+        networks:
+            - application
+        depends_on:
+            - pgsql
+    pgsql:
+        image: 'postgres:17'
+        ports:
+            - '5434:5432'
+        environment:
+            PGPASSWORD: raphael
+            POSTGRES_DB: postgres
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: raphael
+        volumes:
+            - 'sail-pgsql:/var/lib/postgresql/data'
+            - './vendor/laravel/sail/database/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql'
+        networks:
+            - application
+        healthcheck:
+            test:
+                - CMD
+                - pg_isready
+                - '-q'
+                - '-d'
+                - '${DB_DATABASE}'
+                - '-U'
+                - '${DB_USERNAME}'
+            retries: 3
+            timeout: 5s
+volumes:
+    sail-pgsql:
+        driver: local
