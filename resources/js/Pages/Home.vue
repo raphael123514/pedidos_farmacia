@@ -1,7 +1,7 @@
 <template>
   <div class="p-6">
     <div class="pl-6 pb-3">
-      <BotaoAdicionar :funcao="teste" />
+      <BotaoAdicionar :action="teste" />
       
     </div>
     <div class="overflow-x-auto bg-gray-200 shadow-md rounded-lg p-4 ">
