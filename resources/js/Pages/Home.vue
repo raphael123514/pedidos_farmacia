@@ -1,7 +1,7 @@
 <template>
   <div class="p-6">
     <div class="pl-6 pb-3">
-      <BotaoAdicionar :action="teste" />
+      <ButtonAdd :action="teste" />
       
     </div>
     <div class="overflow-x-auto bg-gray-200 shadow-md rounded-lg p-4 ">
@@ -14,12 +14,12 @@
 
 <script>
 import TableComponent from '@/Components/TableComponent.vue'
-import BotaoAdicionar from '@/Components/BotaoAdicionar.vue'
+import ButtonAdd from '@/Components/ButtonAdd.vue'
 
 export default {
   components: {
     TableComponent,
-    BotaoAdicionar
+    ButtonAdd
   },
   data() {
     return {
