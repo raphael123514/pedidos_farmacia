@@ -22,6 +22,10 @@ Route::get('/home', function () {
     return Inertia::render('Home');
 })->name('home');
 
+Route::get('/order', function () {
+    return Inertia::render('Order/Form');
+})->name('home');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

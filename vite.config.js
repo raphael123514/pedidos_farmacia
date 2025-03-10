@@ -4,6 +4,9 @@ import vue from '@vitejs/plugin-vue';
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
+    optimizeDeps: {
+        include: ['vue-currency-input'],
+    },
     plugins: [
         laravel({
             input: [
@@ -14,6 +17,10 @@ export default defineConfig({
         }),
         vue({
             template: {
+                compilerOptions: {
+                    isCustomElement: (tag) =>
+                      ['calendar-range', 'calendar-month', 'calendar-date'].includes(tag),
+                },
                 transformAssetUrls: {
                     base: null,
                     includeAbsolute: false,

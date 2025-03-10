@@ -4,9 +4,10 @@
       <ButtonAdd :action="teste" />
       
     </div>
-    <div class="overflow-x-auto bg-gray-200 shadow-md rounded-lg p-4 ">
+    <Body>
       <TableComponent :columns="columns" :rows="rows" />
-    </div>
+      
+    </Body>
 
   </div>
 
@@ -15,10 +16,12 @@
 <script>
 import TableComponent from '@/Components/TableComponent.vue'
 import ButtonAdd from '@/Components/ButtonAdd.vue'
+import Body from '@/Components/Body.vue'
 
 export default {
   components: {
     TableComponent,
+    Body,
     ButtonAdd
   },
   data() {
@@ -27,9 +30,9 @@ export default {
         { key: 'id', label: 'ID' },
         { key: 'responsavel', label: 'Responsável' },
         { key: 'cliente', label: 'Cliente' },
-        { key: 'data_pedido', label: 'Data do pedido' },
-        { key: 'data_entrega', label: 'Data da entrega' },
-        { key: 'data_vencimento', label: 'Data do vencimento' },
+        { key: 'data_pedido', label: 'Data/hora do pedido' },
+        { key: 'data_entrega', label: 'Data/hora da entrega' },
+        { key: 'data_vencimento', label: 'Data/hora do vencimento' },
         { key: 'acoes', label: '' }
       ],
       rows: [
